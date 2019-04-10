@@ -5,7 +5,7 @@
 
 .mapboxgl-ctrl-city-select .city-link {
   text-decoration: none;
-  color: #448aca;
+  color: #333333;
   margin-right: 8px;
   cursor: pointer;
 }

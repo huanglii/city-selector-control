@@ -1,0 +1,55 @@
+.mapboxgl-ctrl-city-select {
+  width: 200px;
+  padding: 6px 0;
+}
+
+.mapboxgl-ctrl-city-select .city-link {
+  text-decoration: none;
+  color: #448aca;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.mapboxgl-ctrl-city-select .city-list {
+  padding: 6px;
+}
+
+.mapboxgl-ctrl-city-select .city-list:first-child {
+  padding-top: 0;
+}
+.mapboxgl-ctrl-city-select .city-listlast-child {
+  padding-bottom: 0;
+}
+
+.mapboxgl-ctrl-city-select .city-list:not(:first-child) {
+  border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+.mapboxgl-ctrl-city-select .city-list-box {
+  height: 200px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.mapboxgl-ctrl-city-select .city-list-dl {
+  margin: 0;
+}
+
+.mapboxgl-ctrl-city-select .city-list-dl:not(:first-child) {
+  margin-top: 6px;
+}
+
+.mapboxgl-ctrl-city-select .city-list-dl dt {
+  float: left;
+  width: 50px;
+  margin-right: 0;
+  font-weight: 700;
+  color: #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mapboxgl-ctrl-city-select .city-list-dl dd {
+  margin-left: 50px;
+}

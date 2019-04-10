@@ -1,0 +1,12 @@
+{
+  "name": "mapbox-cityselect-control",
+  "version": "1.0.0",
+  "description": "mapbox 城市选择器",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["mapbox", "city select"],
+  "author": "huangli",
+  "license": "ISC"
+}

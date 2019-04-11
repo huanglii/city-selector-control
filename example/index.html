@@ -38,7 +38,9 @@
     });
     CitySelectControl = new CitySelectControl({
       // hot: ['110000', '340500'],
-      // zoom: 8
+      // zoom: 8,
+      theme: 'dark',
+      placeholder: '全国'
     })
     map.addControl(new mapboxgl.NavigationControl(), 'bottom-right')
     map.addControl(CitySelectControl, 'top-right');

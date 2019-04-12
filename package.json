@@ -1,8 +1,9 @@
 {
   "name": "mapbox-cityselect-control",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "mapbox city select control",
-  "main": "index.js",
+  "main": "./src/index.js",
+  "private": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

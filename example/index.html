@@ -26,7 +26,6 @@
 <body>
 
   <div id='map'></div>
-  <script src="../src/citys.min.js"></script>
   <script src="../src/index.js"></script>
   <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiaHVhbmdsaWkiLCJhIjoiY2pzNHBtendwMDZ2ZDQzbnVmZXdtMDlvdiJ9.GSija86yNNR4ssBtFFpx0g';
@@ -41,8 +40,8 @@
       // zoom: 8,
       theme: 'dark',
       placeholder: '全国'
-    })
-    map.addControl(new mapboxgl.NavigationControl(), 'bottom-right')
+    });
+    map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
     map.addControl(CitySelectControl, 'top-right');
   </script>
 

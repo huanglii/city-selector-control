@@ -1,7 +1,7 @@
 {
-  "name": "mapbox-cityselect-control",
-  "version": "0.0.2",
-  "description": "mapbox city select control",
+  "name": "cityselector-control",
+  "version": "0.0.1",
+  "description": "A City Selector Control for Mapbox GL JS",
   "main": "./src/index.js",
   "private": false,
   "scripts": {
@@ -10,7 +10,7 @@
   "keywords": [
     "mapbox",
     "control",
-    "city select"
+    "city selector"
   ],
   "author": "huangli",
   "license": "MIT"

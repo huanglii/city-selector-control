@@ -2,11 +2,11 @@
  * @Author: huangli 
  * @Date: 2019-04-09 21:09:53 
  * @Last Modified by: huangli
- * @Last Modified time: 2019-04-12 23:51:10
+ * @Last Modified time: 2019-04-13 09:15:08
  */
 
-import CITYS from './data/citys'
-class CitySelectControl {
+import Citys from './data/citys'
+class CitySelectorControl {
   constructor(options) {
     this.options = Object.assign({}, {
       theme: 'light',
@@ -22,7 +22,7 @@ class CitySelectControl {
     this._map = map;
     this._container = document.createElement('div');
     this._container.className = 'mapboxgl-ctrl';
-    this._citySelectContainer = this._createNode('div', 'city-select-box ' + this.options.theme, '', this._container);
+    this._citySelectContainer = this._createNode('div', 'city-selector-box ' + this.options.theme, '', this._container);
     this._cityInfoContainer = this._createNode('div', 'city-info-box', this.options.placeholder, this._citySelectContainer, '', this._onInfoClick);
     this._cityListContainer = this._createNode('div', 'city-list-box', '', this._citySelectContainer);
     this._active = false;
@@ -36,7 +36,6 @@ class CitySelectControl {
   }
 
   _render() {
-    // this._info = this._createNode('span', 'city-info-title', '重庆市', this._cityInfoContainer, '', this._onInfoClick);
     // 直辖市及港澳台
     const municipality = ['110000', '120000', '310000', '500000', '810000', '820000', '710000'];
     // 热门城市
@@ -46,29 +45,29 @@ class CitySelectControl {
       for (let i = 0; i < hot.length; i++) {
         const code = hot[i];
         const city = this._getCity(code);
-        this._createNode('a', 'city-link', city.cname, hotCitysContainer, city.code, this._onCityClick);
+        this._createNode('a', 'city-link', city.cname, hotCitysContainer, code, this._onCityClick);
       }
     }
 
     let mcplContainer = this._createNode('div', 'city-list city-list-mp', '', this._cityListContainer);
     let cityListboxContainer = this._createNode('div', 'city-list city-list-pv', '', this._cityListContainer);
-    const provs = CITYS['86'];
+    const provs = Citys['86'];
     for (let provcode in provs) {
       if (provs.hasOwnProperty(provcode)) {
         const prov = provs[provcode];
-        const prov_city = CITYS[provcode]
+        const prov_city = Citys[provcode];
         // 直辖市及港澳台
-        if (municipality.indexOf(prov.code) > -1) {
-          this._createNode('a', 'city-link', prov.cname, mcplContainer, prov.code, this._onCityClick);
+        if (municipality.indexOf(provcode) > -1) {
+          this._createNode('a', 'city-link', prov.cname, mcplContainer, provcode, this._onCityClick);
         } else {
           // 省
           let provContainer = this._createNode('dl', 'city-list-dl', '', cityListboxContainer);
-          this._createNode('dt', 'city-list-dt city-link', prov.cname, provContainer, prov.code, this._onCityClick);
+          this._createNode('dt', 'city-list-dt city-link', prov.cname, provContainer, provcode, this._onCityClick);
           let cityContainer = this._createNode('dd', 'city-list-dd', '', provContainer);
           for (let citycode in prov_city) {
             if (prov_city.hasOwnProperty(citycode)) {
               const city = prov_city[citycode];
-              this._createNode('a', 'city-link', city.cname, cityContainer, city.code, this._onCityClick);
+              this._createNode('a', 'city-link', city.cname, cityContainer, citycode, this._onCityClick);
             }
           }
         }
@@ -106,9 +105,9 @@ class CitySelectControl {
    * @param {string} code code
    */
   _getCity(code) {
-    if (!!CITYS['86'][code]) return CITYS['86'][code];
+    if (!!Citys['86'][code]) return Citys['86'][code];
     let provCode = code.substring(0, 2).padEnd(6, '0');
-    return CITYS[provCode][code];
+    return Citys[provCode][code];
   }
 
 
@@ -136,4 +135,4 @@ class CitySelectControl {
   }
 }
 
-export default CitySelectControl;
+export default CitySelectorControl;

@@ -1,14 +1,14 @@
-.city-select-box {
+.city-selector-box {
   position: relative;
 }
 
-.city-select-box .city-link {
+.city-selector-box .city-link {
   text-decoration: none;
   margin-right: 8px;
   cursor: pointer;
 }
 
-.city-select-box .city-info-box {
+.city-selector-box .city-info-box {
   width: 50px;
   padding: 3px 5px;
   margin-left: 140px;
@@ -19,7 +19,7 @@
   cursor: pointer;
 }
 
-.city-select-box .city-list-box {
+.city-selector-box .city-list-box {
   display: none;
   width: 200px;
   padding: 6px 0;
@@ -37,12 +37,12 @@
   }
 }
 
-.city-select-box .city-info-box,
-.city-select-box .city-list-box {
+.city-selector-box .city-info-box,
+.city-selector-box .city-list-box {
   border-radius: 4px;
 }
 
-.city-select-box .city-list-box:before {
+.city-selector-box .city-list-box:before {
   content: '';
   position: absolute;
   top: 30px;
@@ -54,37 +54,37 @@
   border-color: transparent;
 }
 
-.city-select-box .city-list-box.active {
+.city-selector-box .city-list-box.active {
   display: block;
 }
 
-.city-select-box .city-list {
+.city-selector-box .city-list {
   padding: 6px 8px;
 }
 
-.city-select-box .city-list:first-child {
+.city-selector-box .city-list:first-child {
   padding-top: 0;
 }
 
-.city-select-box .city-list:last-child {
+.city-selector-box .city-list:last-child {
   padding-bottom: 0;
 }
 
-.city-select-box .city-list-pv {
+.city-selector-box .city-list-pv {
   height: 185px;
   overflow-x: hidden;
   overflow-y: auto;
 }
 
-.city-select-box .city-list-dl {
+.city-selector-box .city-list-dl {
   margin: 0;
 }
 
-.city-select-box .city-list-dl:not(:first-child) {
+.city-selector-box .city-list-dl:not(:first-child) {
   margin-top: 6px;
 }
 
-.city-select-box .city-list-dl dt {
+.city-selector-box .city-list-dl dt {
   float: left;
   width: 50px;
   margin-right: 0;
@@ -94,72 +94,72 @@
   white-space: nowrap;
 }
 
-.city-select-box .city-list-dl dd {
+.city-selector-box .city-list-dl dd {
   margin-left: 50px;
 }
 
-.city-select-box .city-list-pv::-webkit-scrollbar {
+.city-selector-box .city-list-pv::-webkit-scrollbar {
   width: 4px;
   height: 4px;
 }
 
-.city-select-box .city-list-pv::-webkit-scrollbar-thumb,
-.city-select-box .city-list-pv::-webkit-scrollbar-track {
+.city-selector-box .city-list-pv::-webkit-scrollbar-thumb,
+.city-selector-box .city-list-pv::-webkit-scrollbar-track {
   border-radius: 4px;
 }
 
 
 /* theme light */
-.city-select-box.light .city-link {
+.city-selector-box.light .city-link {
   color: #333;
 }
 
-.city-select-box.light .city-info-box,
-.city-select-box.light .city-list-box {
+.city-selector-box.light .city-info-box,
+.city-selector-box.light .city-list-box {
   box-shadow: 0 8px 20px 6px rgba(31, 51, 73, .1);
   background: #fff;
 }
 
-.city-select-box.light .city-list-box:before {
+.city-selector-box.light .city-list-box:before {
   border-bottom-color: #fff;
 }
 
-.city-select-box.light .city-list:not(:first-child) {
+.city-selector-box.light .city-list:not(:first-child) {
   border-top: 1px solid rgba(0, 0, 0, .1);
 }
 
-.city-select-box.light .city-list-pv::-webkit-scrollbar-thumb {
+.city-selector-box.light .city-list-pv::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.2);
 }
 
-.city-select-box.light .city-list-pv::-webkit-scrollbar-track {
+.city-selector-box.light .city-list-pv::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1);
 }
 
 /* theme dark */
-.city-select-box.dark .city-link,
-.city-select-box.dark .city-info-box {
+.city-selector-box.dark .city-link,
+.city-selector-box.dark .city-info-box {
   color: #e5e5e5;
 }
 
-.city-select-box.dark .city-info-box,
-.city-select-box.dark .city-list-box {
+.city-selector-box.dark .city-info-box,
+.city-selector-box.dark .city-list-box {
   box-shadow: 0 8px 20px 6px rgba(31, 51, 73, .1);
   background: #313d4f;
 }
 
-.city-select-box.dark .city-list-box:before {
+.city-selector-box.dark .city-list-box:before {
   border-bottom-color: #313d4f;
 }
 
-.city-select-box.dark .city-list:not(:first-child) {
+.city-selector-box.dark .city-list:not(:first-child) {
   border-top: 1px solid rgba(255, 255, 255, .1);
 }
 
-.city-select-box.dark .city-list-pv::-webkit-scrollbar-thumb {
+.city-selector-box.dark .city-list-pv::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.city-select-box.dark .city-list-pv::-webkit-scrollbar-track {
+.city-selector-box.dark .city-list-pv::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
 }

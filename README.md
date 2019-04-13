@@ -10,7 +10,7 @@ npm i cityselector-control
 ## Usage:
 
 ```javascript
-new CitySelectControl(options: Object)
+new CitySelectorControl(options: Object)
 ```
 
 ### Options:
@@ -27,7 +27,7 @@ new CitySelectControl(options: Object)
 import CitySelectorControl from 'cityselector-control'
 import 'cityselector-control/src/style.css'
 // default options
-map.addControl(new CitySelectControl(), 'top-right')
+map.addControl(new CitySelectorControl(), 'top-right')
 
 // custom options
 const citySelectorOptions = {
@@ -36,7 +36,7 @@ const citySelectorOptions = {
   hot: ['110000', '340500'],
   zoom: 10
 };
-map.addControl(new CitySelectControl(citySelectorOptions), 'top-right');
+map.addControl(new CitySelectorControl(citySelectorOptions), 'top-right');
 ```
 
 ## Screenshots:

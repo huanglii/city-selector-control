@@ -1,5 +1,8 @@
 # City Selector Control
-Add a City Selector Control to `mapbox-gl`
+![npm](https://img.shields.io/npm/v/city-selector-control.svg)
+
+***A City Selector Control for `mapbox-gl`***
+
 
 ## Installation
 
@@ -17,9 +20,9 @@ new CitySelectorControl(options: Object)
 |#|Name|Type|Description|Default|
 |---|---|---|---|---|
 |1|`theme`|`String `|Theme, optional `'light'` or `'dark'`.|`'light'`|
-|2|`placeholder`|`String`|The initialized text.|default `'请选择'` |
-|2|`hot`|`Array`|The Code for hot cities.|default `['440100', '440300', '330100', '510100']` |
-|2|`zoom`|`Number`|The desired zoom level.|default `10` |
+|2|`placeholder`|`String`|The initialized text.|`'请选择'` |
+|2|`hot`|`Array`|The Code for hot cities.|`['440100', '440300', '330100', '510100']` |
+|2|`zoom`|`Number`|The desired zoom level.|`10` |
 
 ### Example
 

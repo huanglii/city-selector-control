@@ -1,5 +1,5 @@
 # City Selector Control
-Adds a City Selector Control to `mapbox-gl`
+Add a City Selector Control to `mapbox-gl`
 
 ## Installation
 

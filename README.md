@@ -1,19 +1,19 @@
 # City Selector Control
 Adds a City Selector Control to `mapbox-gl`
 
-## Installation:
+## Installation
 
 ```bash
-npm i cityselector-control
+npm i city-selector-control
 ```
 
-## Usage:
+## Usage
 
 ```javascript
 new CitySelectorControl(options: Object)
 ```
 
-### Options:
+### Options
 |#|Name|Type|Description|Default|
 |---|---|---|---|---|
 |1|`theme`|`String `|Theme, optional `'light'` or `'dark'`.|`'light'`|
@@ -24,8 +24,8 @@ new CitySelectorControl(options: Object)
 ### Example
 
 ```javascript
-import CitySelectorControl from 'cityselector-control'
-import 'cityselector-control/src/style.css'
+import CitySelectorControl from 'city-selector-control'
+import 'cityselector-control/style.css'
 // default options
 map.addControl(new CitySelectorControl(), 'top-right')
 
@@ -39,7 +39,7 @@ const citySelectorOptions = {
 map.addControl(new CitySelectorControl(citySelectorOptions), 'top-right');
 ```
 
-## Screenshots:
+## Screenshots
 
 ![theme](assets/theme.jpg)
 ![default](assets/default.gif)

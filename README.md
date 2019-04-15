@@ -1,5 +1,7 @@
 # City Selector Control
-![npm](https://img.shields.io/npm/v/city-selector-control.svg)
+[![npm](https://img.shields.io/npm/v/city-selector-control.svg)][npm-url] [![npm](https://img.shields.io/npm/dt/city-selector-control.svg?style=popout)][npm-url]
+
+[npm-url]: https://www.npmjs.com/package/city-selector-control
 
 ***A City Selector Control for `mapbox-gl`***
 

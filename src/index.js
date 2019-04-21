@@ -2,7 +2,7 @@
  * @Author: huangli 
  * @Date: 2019-04-09 21:09:53 
  * @Last Modified by: huangli
- * @Last Modified time: 2019-04-21 16:40:46
+ * @Last Modified time: 2019-04-21 18:57:17
  */
 
 import Citys from './data/citys'
@@ -37,11 +37,11 @@ class CitySelectorControl {
   }
 
   _render() {
-    // 直辖市及港澳台
-    const municipality = ['110000', '120000', '310000', '500000', '810000', '820000', '710000'];
     // 热门城市
     const hot = this.options.hot;
-    // 省字母
+    // 直辖市及港澳台
+    const municipality = ['110000', '120000', '310000', '500000', '810000', '820000', '710000'];
+    // 省拼音快捷索引
     const provLetters = ['A', 'F', 'G', 'H', 'J', 'L', 'N', 'Q', 'S', 'X', 'Y', 'Z']
     if (hot.length > 0) {
       const hotCitysContainer = this._createNode('div', 'city-list city-list-hot', '', this._cityListContainer)
@@ -51,38 +51,41 @@ class CitySelectorControl {
         this._createNode('a', 'city-link', city.cname, hotCitysContainer, code, this._onCityClick);
       }
     }
+    const provs = Citys['86'];
     // 直辖市及港澳台
     let mcplContainer = this._createNode('div', 'city-list city-list-mp', '', this._cityListContainer);
-    // 省字母
+    for (let i = 0; i < municipality.length; i++) {
+      const provcode = municipality[i];
+      let prov = provs[provcode];
+      this._createNode('a', 'city-link', prov.cname, mcplContainer, provcode, this._onCityClick);
+    }
+    // 省拼音快捷索引
     let provLetterboxContainer = this._createNode('div', 'city-list city-list-lt', '', this._cityListContainer);
     for (let i = 0; i < provLetters.length; i++) {
       this._createNode('div', 'letter-link', provLetters[i], provLetterboxContainer, '', this._onLetterClick);
     }
     // 省
     this.cityListboxContainer = this._createNode('div', 'city-list city-list-pv', '', this._cityListContainer);
-    const provs = Citys['86'];
     // 按拼音排序
     let provsSortedKeys = Object.keys(provs).sort((a, b) => {
       return provs[a].pyname.charCodeAt() - provs[b].pyname.charCodeAt();
     });
     for (let i = 0; i < provsSortedKeys.length; i++) {
       const provcode = provsSortedKeys[i];
+      if (municipality.indexOf(provcode) > -1) {
+        continue; // 直辖市及港澳台
+      }
       const prov = provs[provcode];
       const prov_city = Citys[provcode];
-      // 直辖市及港澳台
-      if (municipality.indexOf(provcode) > -1) {
-        this._createNode('a', 'city-link', prov.cname, mcplContainer, provcode, this._onCityClick);
-      } else {
-        // 省
-        let letter = prov.pyname[0]
-        let provContainer = this._createNode('dl', 'city-list-dl letter-' + letter, '', this.cityListboxContainer);
-        this._createNode('dt', 'city-list-dt city-link', prov.cname, provContainer, provcode, this._onCityClick);
-        let cityContainer = this._createNode('dd', 'city-list-dd', '', provContainer);
-        for (let citycode in prov_city) {
-          if (prov_city.hasOwnProperty(citycode)) {
-            const city = prov_city[citycode];
-            this._createNode('a', 'city-link', city.cname, cityContainer, citycode, this._onCityClick);
-          }
+      // 省
+      let provContainer = this._createNode('dl', 'city-list-dl letter-' + prov.pyname[0], '', this.cityListboxContainer);
+      this._createNode('dt', 'city-list-dt city-link', prov.cname, provContainer, provcode, this._onCityClick);
+      let cityContainer = this._createNode('dd', 'city-list-dd', '', provContainer);
+      // 省对应的市
+      for (let citycode in prov_city) {
+        if (prov_city.hasOwnProperty(citycode)) {
+          const city = prov_city[citycode];
+          this._createNode('a', 'city-link', city.cname, cityContainer, citycode, this._onCityClick);
         }
       }
     }
@@ -95,7 +98,6 @@ class CitySelectorControl {
   _onCityClick(e) {
     let code = e.target.getAttribute('data-code');
     this._cityInfoContainer.innerText = e.target.innerText;
-    console.log(code);
 
     let c = this._getCity(code);
     this._map.flyTo({

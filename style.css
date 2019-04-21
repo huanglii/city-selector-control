@@ -23,7 +23,6 @@
   position: relative;
   display: none;
   width: 200px;
-  padding: 6px 0;
   margin-top: 9px;
   animation: fadeIn .5s;
 }
@@ -63,18 +62,10 @@
   padding: 6px 8px;
 }
 
-.city-selector-box .city-list:first-child {
-  padding-top: 0;
-}
-
-.city-selector-box .city-list:last-child {
-  padding-bottom: 0;
-}
-
 .city-selector-box .city-list-lt {
   position: absolute;
   right: 0;
-  margin-top: 5px;
+  margin-top: 3px;
   border: none !important;
 }
 
@@ -88,8 +79,9 @@
 }
 
 .city-selector-box .city-list-pv {
+  padding-top: 0;
   padding-right: 16px;
-  height: 185px;
+  height: 190px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -98,7 +90,7 @@
   margin: 0;
 }
 
-.city-selector-box .city-list-dl:not(:first-child) {
+.city-selector-box .city-list-dl {
   padding-top: 6px;
 }
 

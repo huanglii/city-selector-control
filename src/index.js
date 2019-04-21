@@ -2,7 +2,7 @@
  * @Author: huangli 
  * @Date: 2019-04-09 21:09:53 
  * @Last Modified by: huangli
- * @Last Modified time: 2019-04-13 09:15:08
+ * @Last Modified time: 2019-04-21 16:40:46
  */
 
 import Citys from './data/citys'
@@ -17,6 +17,7 @@ class CitySelectorControl {
     }, options);
     this._onCityClick = this._onCityClick.bind(this);
     this._onInfoClick = this._onInfoClick.bind(this);
+    this._onLetterClick = this._onLetterClick.bind(this);
   }
   onAdd(map) {
     this._map = map;
@@ -40,6 +41,8 @@ class CitySelectorControl {
     const municipality = ['110000', '120000', '310000', '500000', '810000', '820000', '710000'];
     // 热门城市
     const hot = this.options.hot;
+    // 省字母
+    const provLetters = ['A', 'F', 'G', 'H', 'J', 'L', 'N', 'Q', 'S', 'X', 'Y', 'Z']
     if (hot.length > 0) {
       const hotCitysContainer = this._createNode('div', 'city-list city-list-hot', '', this._cityListContainer)
       for (let i = 0; i < hot.length; i++) {
@@ -48,33 +51,42 @@ class CitySelectorControl {
         this._createNode('a', 'city-link', city.cname, hotCitysContainer, code, this._onCityClick);
       }
     }
-
+    // 直辖市及港澳台
     let mcplContainer = this._createNode('div', 'city-list city-list-mp', '', this._cityListContainer);
-    let cityListboxContainer = this._createNode('div', 'city-list city-list-pv', '', this._cityListContainer);
+    // 省字母
+    let provLetterboxContainer = this._createNode('div', 'city-list city-list-lt', '', this._cityListContainer);
+    for (let i = 0; i < provLetters.length; i++) {
+      this._createNode('div', 'letter-link', provLetters[i], provLetterboxContainer, '', this._onLetterClick);
+    }
+    // 省
+    this.cityListboxContainer = this._createNode('div', 'city-list city-list-pv', '', this._cityListContainer);
     const provs = Citys['86'];
-    for (let provcode in provs) {
-      if (provs.hasOwnProperty(provcode)) {
-        const prov = provs[provcode];
-        const prov_city = Citys[provcode];
-        // 直辖市及港澳台
-        if (municipality.indexOf(provcode) > -1) {
-          this._createNode('a', 'city-link', prov.cname, mcplContainer, provcode, this._onCityClick);
-        } else {
-          // 省
-          let provContainer = this._createNode('dl', 'city-list-dl', '', cityListboxContainer);
-          this._createNode('dt', 'city-list-dt city-link', prov.cname, provContainer, provcode, this._onCityClick);
-          let cityContainer = this._createNode('dd', 'city-list-dd', '', provContainer);
-          for (let citycode in prov_city) {
-            if (prov_city.hasOwnProperty(citycode)) {
-              const city = prov_city[citycode];
-              this._createNode('a', 'city-link', city.cname, cityContainer, citycode, this._onCityClick);
-            }
+    // 按拼音排序
+    let provsSortedKeys = Object.keys(provs).sort((a, b) => {
+      return provs[a].pyname.charCodeAt() - provs[b].pyname.charCodeAt();
+    });
+    for (let i = 0; i < provsSortedKeys.length; i++) {
+      const provcode = provsSortedKeys[i];
+      const prov = provs[provcode];
+      const prov_city = Citys[provcode];
+      // 直辖市及港澳台
+      if (municipality.indexOf(provcode) > -1) {
+        this._createNode('a', 'city-link', prov.cname, mcplContainer, provcode, this._onCityClick);
+      } else {
+        // 省
+        let letter = prov.pyname[0]
+        let provContainer = this._createNode('dl', 'city-list-dl letter-' + letter, '', this.cityListboxContainer);
+        this._createNode('dt', 'city-list-dt city-link', prov.cname, provContainer, provcode, this._onCityClick);
+        let cityContainer = this._createNode('dd', 'city-list-dd', '', provContainer);
+        for (let citycode in prov_city) {
+          if (prov_city.hasOwnProperty(citycode)) {
+            const city = prov_city[citycode];
+            this._createNode('a', 'city-link', city.cname, cityContainer, citycode, this._onCityClick);
           }
         }
       }
     }
   }
-
 
   /**
    * @description city 的 click 事件
@@ -90,6 +102,15 @@ class CitySelectorControl {
       center: [c.lon, c.lat],
       zoom: this.options.zoom
     })
+  }
+
+  /**
+   * @description letter 的 click 事件
+   * @param {*} e 
+   */
+  _onLetterClick(e) {
+    let l = e.target.innerText;
+    this.cityListboxContainer.querySelector('.letter-' + l).scrollIntoView(true)
   }
 
   /**

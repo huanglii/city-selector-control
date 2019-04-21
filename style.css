@@ -20,6 +20,7 @@
 }
 
 .city-selector-box .city-list-box {
+  position: relative;
   display: none;
   width: 200px;
   padding: 6px 0;
@@ -45,7 +46,7 @@
 .city-selector-box .city-list-box:before {
   content: '';
   position: absolute;
-  top: 30px;
+  top: -4px;
   right: 25px;
   width: 0;
   height: 0;
@@ -70,7 +71,24 @@
   padding-bottom: 0;
 }
 
+.city-selector-box .city-list-lt {
+  position: absolute;
+  right: 0;
+  margin-top: 5px;
+  border: none !important;
+}
+
+.city-selector-box .city-list-lt .letter-link {
+  cursor: pointer;
+  line-height: 15px;
+}
+
+.city-selector-box .city-list-lt .letter-link:hover {
+  text-decoration: underline;
+}
+
 .city-selector-box .city-list-pv {
+  padding-right: 16px;
   height: 185px;
   overflow-x: hidden;
   overflow-y: auto;
@@ -110,7 +128,8 @@
 
 
 /* theme light */
-.city-selector-box.light .city-link {
+.city-selector-box.light .city-link,
+.city-selector-box.light .letter-link {
   color: #333;
 }
 
@@ -138,6 +157,7 @@
 
 /* theme dark */
 .city-selector-box.dark .city-link,
+.city-selector-box.dark .letter-link,
 .city-selector-box.dark .city-info-box {
   color: #e5e5e5;
 }

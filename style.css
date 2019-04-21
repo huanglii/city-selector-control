@@ -99,7 +99,7 @@
 }
 
 .city-selector-box .city-list-dl:not(:first-child) {
-  margin-top: 6px;
+  padding-top: 6px;
 }
 
 .city-selector-box .city-list-dl dt {

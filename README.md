@@ -6,29 +6,29 @@
 ***A City Selector Control for `mapbox-gl`***
 
 
-## Installation
+## Quickstart
 
-```bash
+### Using CDN
+``` html
+<script src="https://cdn.jsdelivr.net/npm/city-selector-control@0.2.1/dist/city-selector-control.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/city-selector-control@0.2.1/dist/city-selector-control.css" rel="stylesheet">
+````
+``` html
+<div id='map' style='width: 800px; height: 600px;'></div>
+<script>
+  mapboxgl.accessToken = '<your access token here>';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9'
+  });
+  map.addControl(new CitySelectorControl(), 'top-right');
+</script>
+```
+### Module bundler
+``` bash
 npm i city-selector-control
 ```
-
-## Usage
-
-```javascript
-new CitySelectorControl(options: Object)
-```
-
-### Options
-|#|Name|Type|Description|Default|
-|---|---|---|---|---|
-|1|`theme`|`String `|Theme, optional `'light'` or `'dark'`.|`'light'`|
-|2|`placeholder`|`String`|The initialized text.|`'请选择'` |
-|2|`hot`|`Array`|The code for hot cities.|`['440100', '440300', '330100', '510100']` |
-|2|`zoom`|`Number`|The desired zoom level.|`10` |
-
-### Example
-
-```javascript
+``` javascript
 import CitySelectorControl from 'city-selector-control'
 import 'city-selector-control/style.css'
 // default options
@@ -43,6 +43,14 @@ const citySelectorOptions = {
 };
 map.addControl(new CitySelectorControl(citySelectorOptions), 'top-right');
 ```
+
+## Options
+|#|Name|Type|Description|Default|
+|---|---|---|---|---|
+|1|`theme`|`String `|Theme, optional `'light'` or `'dark'`.|`'light'`|
+|2|`placeholder`|`String`|The initialized text.|`'请选择'` |
+|2|`hot`|`Array`|The code for hot cities.|`['440100', '440300', '330100', '510100']` |
+|2|`zoom`|`Number`|The desired zoom level.|`10` |
 
 ## Screenshots
 

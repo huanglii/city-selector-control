@@ -6,12 +6,12 @@
 ***A City Selector Control for `mapbox-gl`***
 
 
-## Quickstart
+## 快速开始
 
-### Using CDN
+### 使用 CDN
 ``` html
-<script src="https://cdn.jsdelivr.net/npm/city-selector-control@0.2.1/dist/city-selector-control.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/city-selector-control@0.2.1/dist/city-selector-control.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/city-selector-control@0.2.2/dist/index.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/city-selector-control@0.2.2/dist/style.css" rel="stylesheet">
 ````
 ``` html
 <div id='map' style='width: 800px; height: 600px;'></div>
@@ -24,17 +24,17 @@
   map.addControl(new CitySelectorControl(), 'top-right');
 </script>
 ```
-### Module bundler
+### 模块化
 ``` bash
 npm i city-selector-control
 ```
 ``` javascript
 import CitySelectorControl from 'city-selector-control'
 import 'city-selector-control/style.css'
-// default options
+// 默认选项
 map.addControl(new CitySelectorControl(), 'top-right')
 
-// custom options
+// 自定义
 const citySelectorOptions = {
   theme: 'dark',
   placeholder: '全国',
@@ -44,15 +44,15 @@ const citySelectorOptions = {
 map.addControl(new CitySelectorControl(citySelectorOptions), 'top-right');
 ```
 
-## Options
-|#|Name|Type|Description|Default|
+## 选项
+|#|名称|类型|描述|默认值|
 |---|---|---|---|---|
-|1|`theme`|`String `|Theme, optional `'light'` or `'dark'`.|`'light'`|
-|2|`placeholder`|`String`|The initialized text.|`'请选择'` |
-|2|`hot`|`Array`|The code for hot cities.|`['440100', '440300', '330100', '510100']` |
-|2|`zoom`|`Number`|The desired zoom level.|`10` |
+|1|`theme`|`String `|主题, 可选 `'light'` 或 `'dark'`.|`'light'`|
+|2|`placeholder`|`String`|初始化时的文本.|`'请选择'` |
+|2|`hot`|`Array`|热门城市编码，可为空 [].|`['440100', '440300', '330100', '510100']` |
+|2|`zoom`|`Number`|选择城市后的缩放级别.|`10` |
 
-## Screenshots
+## 截图
 
 ![theme](assets/theme.jpg)
 ![default](assets/default.gif)

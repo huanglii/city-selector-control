@@ -2,12 +2,16 @@
   "name": "city-selector-control",
   "version": "0.2.2",
   "description": "A City Selector Control for Mapbox GL JS",
-  "main": "src/index.js",
-  "style": "dist/city-selector-control.css",
-  "private": false,
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c"
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/city-selector-control.es.js",
+  "module": "./dist/city-selector-control.umd.js",
+  "exports": {
+    ".": {
+      "import": "./dist/city-selector-control.es.js",
+      "require": "./dist/city-selector-control.umd.js"
+    }
   },
   "keywords": [
     "mapbox",
@@ -15,20 +19,31 @@
     "control",
     "city selector"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:huanglii/city-selector-control.git"
-  },
-  "author": "huangli",
+  "repository": "https://github.com/huanglii/city-selector-control.git",
+  "author": "黄俐 <li.huangli@qq.com>",
   "license": "MIT",
-  "dependencies": {},
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+  },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-latest": "^6.24.1",
-    "rollup": "^1.12.1",
-    "rollup-plugin-babel": "^3.0.7",
-    "rollup-plugin-node-resolve": "^5.0.0",
-    "rollup-plugin-uglify": "^3.0.0"
+    "@types/mapbox-gl": "^2.6.0",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "conventional-changelog": "^3.1.24",
+    "conventional-changelog-cli": "^2.1.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.4",
+    "vite": "^2.6.10"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

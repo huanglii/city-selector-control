@@ -30,7 +30,7 @@ npm i city-selector-control
 ```
 ``` javascript
 import CitySelectorControl from 'city-selector-control'
-import 'city-selector-control/style.css'
+import 'city-selector-control/dist/style.css'
 // 默认选项
 map.addControl(new CitySelectorControl(), 'top-right')
 

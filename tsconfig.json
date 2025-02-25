@@ -1,7 +1,12 @@
 {
   "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
     "outDir": "./dist",
-    "target": "es5"
+    "target": "es5",
+    "lib": ["es2015", "dom"],
+    "declaration": true,                         // 生成类型声明文件 (.d.ts)
+    "declarationDir": "./types",                 // 声明文件输出目录
   },
   "include": ["./src/**/*"]
 }

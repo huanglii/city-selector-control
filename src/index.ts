@@ -1,14 +1,8 @@
 import citys from './data/citys'
 import {createNode} from './utils'
-
-export interface CitySelectorOptions {
-  theme: 'light' | 'dark'
-  placeholder: string
-  hot: string[]
-  zoom: number
-}
-
-export default class CitySelectorControl {
+import type { Citys } from './data/citys'
+import type {CitySelectorOptions} from './index.d'
+export default class CitySelectorControl{
   options = {
     theme: 'light',
     placeholder: '请选择',
@@ -16,13 +10,13 @@ export default class CitySelectorControl {
     hot: ['440100', '440300', '330100', '510100'],
     zoom: 10,
   } as CitySelectorOptions
-  private _map: mapboxgl.Map
-  private _container: HTMLElement
-  private _citySelectContainer: HTMLElement
-  private _cityListboxContainer: HTMLElement
-  private _cityInfoContainer: HTMLElement
-  private _cityListContainer: HTMLElement
-  private _active: boolean
+  private _map: mapboxgl.Map | undefined
+  private _container: HTMLElement | undefined
+  private _citySelectContainer: HTMLElement | undefined
+  private _cityListboxContainer: HTMLElement | undefined
+  private _cityInfoContainer: HTMLElement | undefined
+  private _cityListContainer: HTMLElement | undefined
+  private _active: boolean | undefined
 
   constructor(options: CitySelectorOptions) {
     this.options = Object.assign(
@@ -60,7 +54,7 @@ export default class CitySelectorControl {
   }
 
   onRemove() {
-    this._container.parentNode.removeChild(this._container)
+    this._container?.parentNode?.removeChild(this._container)
     this._map = undefined
   }
 
@@ -72,28 +66,28 @@ export default class CitySelectorControl {
     // 省拼音快捷索引
     const provLetters = ['A', 'F', 'G', 'H', 'J', 'L', 'N', 'Q', 'S', 'X', 'Y', 'Z']
     if (hot.length > 0) {
-      const hotCitysContainer = createNode('div', 'city-list city-list-hot', '', this._cityListContainer)
+      const hotCitysContainer = createNode('div', 'city-list city-list-hot', '', this._cityListContainer as HTMLElement)
       for (let i = 0; i < hot.length; i++) {
         const code = hot[i]
         const city = this._getCity(code)
         createNode('a', 'city-link', city.cname, hotCitysContainer, code, this._onCityClick)
       }
     }
-    const provs = citys['86']
+    const provs: Citys[string] = citys['86']
     // 直辖市及港澳台
-    let mcplContainer = createNode('div', 'city-list city-list-mp', '', this._cityListContainer)
+    let mcplContainer = createNode('div', 'city-list city-list-mp', '', this._cityListContainer as HTMLElement)
     for (let i = 0; i < municipality.length; i++) {
-      const provcode = municipality[i]
+      const provcode= municipality[i]
       let prov = provs[provcode]
       createNode('a', 'city-link', prov.cname, mcplContainer, provcode, this._onCityClick)
     }
     // 省拼音快捷索引
-    let provLetterboxContainer = createNode('div', 'city-list city-list-lt', '', this._cityListContainer)
+    let provLetterboxContainer = createNode('div', 'city-list city-list-lt', '', this._cityListContainer as HTMLElement)
     for (let i = 0; i < provLetters.length; i++) {
       createNode('div', 'letter-link', provLetters[i], provLetterboxContainer, '', this._onLetterClick)
     }
     // 省
-    this._cityListboxContainer = createNode('div', 'city-list city-list-pv', '', this._cityListContainer)
+    this._cityListboxContainer = createNode('div', 'city-list city-list-pv', '', this._cityListContainer as HTMLElement)
     // 按拼音排序
     let provsSortedKeys = Object.keys(provs).sort((a, b) => {
       return provs[a].pyname.charCodeAt() - provs[b].pyname.charCodeAt()
@@ -125,10 +119,10 @@ export default class CitySelectorControl {
    */
   private _onCityClick(e) {
     let code = e.target.getAttribute('data-code')
-    this._cityInfoContainer.innerText = e.target.innerText
+    this._cityInfoContainer!.innerText = e.target.innerText
 
     let c = this._getCity(code)
-    this._map.flyTo({
+    this._map && this._map.flyTo({
       center: [c.lon, c.lat],
       zoom: this.options.zoom,
     })
@@ -140,7 +134,7 @@ export default class CitySelectorControl {
    */
   private _onLetterClick(e) {
     let l = e.target.innerText
-    this._cityListboxContainer.querySelector('.letter-' + l).scrollIntoView(true)
+    this._cityListboxContainer?.querySelector('.letter-' + l)?.scrollIntoView(true)
   }
 
   /**
@@ -148,7 +142,7 @@ export default class CitySelectorControl {
    */
   private _onInfoClick() {
     this._active = !this._active
-    this._active ? this._cityListContainer.classList.add('active') : this._cityListContainer.classList.remove('active')
+    this._active ? this._cityListContainer?.classList.add('active') : this._cityListContainer?.classList.remove('active')
   }
 
   /**

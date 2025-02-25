@@ -1,4 +1,14 @@
-const citys = {
+export type Citys = {
+  [key: string]: {
+    [key: string]: {
+      cname: string;
+      pyname: string;
+      lon: string;
+      lat: string;
+    };
+  };
+}
+const citys:Citys = {
   '86': {
     '110000': {
       cname: '北京市',

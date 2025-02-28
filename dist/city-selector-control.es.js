@@ -2427,12 +2427,16 @@ class CitySelectorControl {
       hot: ["440100", "440300", "330100", "510100"],
       zoom: 10
     };
-    this.options = Object.assign({}, {
-      theme: "light",
-      placeholder: "\u8BF7\u9009\u62E9",
-      hot: ["440100", "440300", "330100", "510100"],
-      zoom: 10
-    }, options);
+    this.options = Object.assign(
+      {},
+      {
+        theme: "light",
+        placeholder: "\u8BF7\u9009\u62E9",
+        hot: ["440100", "440300", "330100", "510100"],
+        zoom: 10
+      },
+      options
+    );
     this._onCityClick = this._onCityClick.bind(this);
     this._onInfoClick = this._onInfoClick.bind(this);
     this._onLetterClick = this._onLetterClick.bind(this);
@@ -2442,7 +2446,14 @@ class CitySelectorControl {
     this._container = document.createElement("div");
     this._container.className = "mapboxgl-ctrl";
     this._citySelectContainer = createNode("div", "city-selector-box " + this.options.theme, "", this._container);
-    this._cityInfoContainer = createNode("div", "city-info-box", this.options.placeholder, this._citySelectContainer, "", this._onInfoClick);
+    this._cityInfoContainer = createNode(
+      "div",
+      "city-info-box",
+      this.options.placeholder,
+      this._citySelectContainer,
+      "",
+      this._onInfoClick
+    );
     this._cityListContainer = createNode("div", "city-list-box", "", this._citySelectContainer);
     this._active = false;
     this._render();

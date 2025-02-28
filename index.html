@@ -23,12 +23,11 @@
   <body>
     <div id="map"></div>
     <script type="module">
-      import CitySelectorControl from './src/index.ts'
-      // mapboxgl.accessToken = '{YOUR MAPBOX ACCESS TOKEN}'
-      mapboxgl.accessToken = 'pk.eyJ1IjoiaHVhbmdsaWkiLCJhIjoiY2ptbjJsZXRsMHBlNzNsbGIycTk3eWU0biJ9.Pj_8_ER8nD7UQSSeOg4JZA'
+      import CitySelectorControl from './dist/city-selector-control.es.js'
+      mapboxgl.accessToken = '{YOUR MAPBOX ACCESS TOKEN}'
       const map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/huanglii/ckqt08oxg1kcc18ub9vowurqd?optimize=true',
+        style: 'mapbox://styles/mapbox/streets-v9',
         
       })
 

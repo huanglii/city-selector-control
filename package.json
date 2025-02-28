@@ -1,12 +1,13 @@
 {
   "name": "city-selector-control",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A City Selector Control for Mapbox GL JS",
   "files": [
     "dist"
   ],
   "main": "./dist/city-selector-control.es.js",
   "module": "./dist/city-selector-control.umd.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/city-selector-control.es.js",
@@ -44,7 +45,8 @@
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.4.1",
     "typescript": "^4.4.4",
-    "vite": "^2.6.10"
+    "vite": "^2.6.10",
+    "vite-plugin-dts": "^4.5.1"
   },
   "config": {
     "commitizen": {
